@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self'; connect-src https://eu.i.posthog.com; base-uri 'none'; form-action 'none'">
+<meta name="railset-count-key" content="phc_kRgJ9YDmR5X4EGE6Pv6mgwoivGdb86YKJWBGQUEHNwCx">
+<title>Railset: build real software with Claude</title>
+<meta name="description" content="Railset guides you from your idea to software that works, step by step, even if you've never written code.">
+<link rel="canonical" href="https://railset.app/">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Railset">
+<meta property="og:url" content="https://railset.app/">
+<meta property="og:title" content="Railset">
+<meta property="og:description" content="Build real software with Claude, step by step, even if you've never written code.">
+<meta property="og:image" content="https://railset.app/preview.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Railset logo above the words: Build real software with Claude.">
+<style>
+:root {
+  --paper: #f6f5f1; --ink: #131312; --muted: #66655e; --rule: #dfddd5;
+  --panel: #131312; --panel-ink: #f4f3ee;
+  --accent: #0b7f49; --accent-hover: #096b3d; --accent-ink: #fff;
+  --rail: rgba(19, 19, 18, .075);
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0e0f0e; --ink: #f2f1ec; --muted: #a2a198; --rule: #2a2b28;
+    --panel: #1b1c1a; --panel-ink: #f2f1ec;
+    --accent: #35d07f; --accent-hover: #52dd94; --accent-ink: #06210f;
+    --rail: rgba(242, 241, 236, .085);
+  }
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); }
+body {
+  margin: 0; background: var(--paper); color: var(--ink); position: relative;
+  font: 17px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.rails-box {
+  position: absolute; top: 0; left: 0; right: 0; height: 900px; overflow: hidden; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 34%, transparent 66%);
+  mask-image: linear-gradient(to bottom, #000 34%, transparent 66%);
+}
+.rails {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: max(1440px, 100%); height: 900px; color: var(--rail);
+}
+.wrap { position: relative; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+header {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 22px 0 0; font-size: 14px; color: var(--muted);
+}
+.logo {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 700; font-size: 18px; letter-spacing: -.02em; color: var(--ink);
+}
+.logo svg { width: 22px; height: 22px; }
+.hero { text-align: center; padding: 72px 0 0; }
+h1 {
+  font-size: clamp(40px, 5.6vw, 70px); line-height: 1.04; letter-spacing: -.04em; font-weight: 680;
+  margin: 0; text-wrap: balance;
+}
+.sub {
+  font-size: clamp(18px, 2vw, 21px); line-height: 1.4; color: var(--muted);
+  max-width: 640px; margin: 20px auto 0;
+}
+.install { margin: 40px auto 0; max-width: 900px; }
+.line {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--panel); color: var(--panel-ink);
+  border-radius: 14px; padding: 10px 10px 10px 20px; min-height: 62px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .18);
+}
+.line code {
+  flex: 1; min-width: 0; text-align: left; overflow-wrap: anywhere;
+  font: 15px/1.45 ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  -webkit-user-select: all; user-select: all;
+}
+.copy {
+  flex: none; min-width: 96px; padding: 12px 20px; border: 0; border-radius: 9px; cursor: pointer;
+  background: var(--accent); color: var(--accent-ink);
+  font: 600 15px/1 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+.copy[hidden] { display: none; }
+.copy:hover { background: var(--accent-hover); }
+.copy:active { transform: translateY(1px); }
+.copy:focus-visible { outline: 3px solid var(--panel-ink); outline-offset: 2px; }
+.copy.done, .copy.done:hover { background: transparent; color: var(--panel-ink); box-shadow: inset 0 0 0 1.5px var(--panel-ink); }
+.under { font-size: 15px; color: var(--muted); margin: 14px 0 0; text-align: center; }
+.under b { color: var(--ink); font-weight: 600; }
+.steps {
+  list-style: none; padding: 0; margin: 56px 0 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  font-size: 15.5px; color: var(--muted);
+}
+.steps .n { display: block; font: 600 13px ui-monospace, "SF Mono", Menlo, monospace; margin-bottom: 6px; }
+.steps b { display: block; color: var(--ink); font-weight: 620; font-size: 18px; letter-spacing: -.01em; margin-bottom: 3px; }
+.steps li.now b { color: var(--accent); }
+.fix { font-size: 14.5px; color: var(--muted); margin: 22px 0 0; }
+.block { margin: 56px 0 0; border-top: 1px solid var(--rule); padding-top: 24px; }
+h2 { font-size: 18px; letter-spacing: -.01em; font-weight: 620; margin: 0 0 14px; }
+.ready {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  font-size: 15.5px; color: var(--muted);
+}
+.ready b { display: block; color: var(--ink); font-weight: 600; }
+details { margin: 40px 0 0; border-top: 1px solid var(--rule); padding-top: 18px; font-size: 15px; color: var(--muted); }
+summary { cursor: pointer; color: var(--ink); font-weight: 600; font-size: 16px; }
+details p { margin: 12px 0 0; max-width: 720px; }
+details code {
+  font: 13.5px ui-monospace, "SF Mono", Menlo, monospace; overflow-wrap: anywhere;
+  background: var(--rule); color: var(--ink); padding: 1px 5px; border-radius: 4px;
+}
+footer { margin: 40px 0 0; padding: 18px 0 40px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
+footer p { margin: 0 0 4px; }
+footer a { color: inherit; }
+summary:focus-visible, footer a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+.phone-card { display: none; margin: 36px 0 0; background: var(--panel); color: var(--panel-ink); border-radius: 16px; padding: 22px; text-align: center; }
+.phone-card h2 { margin: 0 0 6px; font-size: 20px; }
+.phone-card p { margin: 0; font-size: 15.5px; opacity: .78; }
+.phone-card .address {
+  display: block; margin: 14px 0 2px; letter-spacing: -.02em;
+  font: 600 28px ui-monospace, "SF Mono", Menlo, monospace;
+  -webkit-user-select: all; user-select: all;
+}
+.notmac {
+  display: none; margin: 40px auto 0; max-width: 640px; padding: 18px 20px; border-radius: 14px;
+  background: var(--panel); color: var(--panel-ink); font-size: 16px; text-align: center;
+}
+.not-mac .notmac { display: block; }
+.not-mac .install, .not-mac .steps, .not-mac .fix { display: none; }
+@media (max-width: 760px) {
+  .steps, .ready { grid-template-columns: 1fr; gap: 16px; }
+  .line { flex-wrap: wrap; padding: 14px; }
+  .copy { width: 100%; }
+  .hero { padding-top: 44px; }
+}
+@media (hover: none) and (pointer: coarse) {
+  .phone-card { display: block; }
+  .install, .steps, .fix, .not-mac .notmac { display: none; }
+  .hero { padding-top: 44px; }
+  .ready { grid-template-columns: 1fr; gap: 12px; }
+}
+</style>
+</head>
+<body>
+<div class="rails-box" aria-hidden="true">
+  <svg class="rails" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMin slice">
+    <g fill="currentColor"><path d="M715.2 36h1L108 900H92z"/><path d="M723.8 36h1L1348 900h-16z"/></g>
+    <g stroke="currentColor" fill="none">
+      <path d="M718.6 31.7H721.4" stroke-width=".81"/>
+      <path d="M713 38.5H727" stroke-width=".87"/>
+      <path d="M702.2 51.5H737.8" stroke-width=".97"/>
+      <path d="M685.6 71.6H754.4" stroke-width="1.13"/>
+      <path d="M662.5 99.5H777.5" stroke-width="1.36"/>
+      <path d="M632.6 135.7H807.4" stroke-width="1.65"/>
+      <path d="M595.4 180.7H844.6" stroke-width="2.01"/>
+      <path d="M550.6 234.9H889.4" stroke-width="2.45"/>
+      <path d="M497.9 298.7H942.1" stroke-width="2.96"/>
+      <path d="M437 372.4H1003" stroke-width="3.55"/>
+      <path d="M367.6 456.3H1072.4" stroke-width="4.23"/>
+      <path d="M289.5 550.7H1150.5" stroke-width="4.99"/>
+      <path d="M202.5 656H1237.5" stroke-width="5.84"/>
+      <path d="M106.3 772.3H1333.7" stroke-width="6.77"/>
+      <path d="M.8 900H1439.2" stroke-width="7.8"/>
+    </g>
+  </svg>
+</div>
+<div class="wrap">
+  <header>
+    <span class="logo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="currentColor"><path d="M8.6 2h2.3L5.4 22H1.6z"/><path d="M13.1 2h2.3l7 20h-3.8z"/><rect x="8.2" y="5.2" width="7.6" height="2" rx=".4"/><rect x="6.6" y="10.4" width="10.8" height="2.2" rx=".4"/><rect x="4.8" y="16" width="14.4" height="2.6" rx=".4"/></g></svg>
+      railset
+    </span>
+    <span>An early version, being tested</span>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>Build real software with Claude.</h1>
+      <p class="sub">Railset guides you from your idea to software that works, step by step, the way the best teams build it. You don't need to know how to code.</p>
+
+      <div class="install">
+        <div class="line">
+          <code id="line">curl -fsSL https://github.com/railset/cli/releases/latest/download/install.sh | sh</code>
+          <button class="copy" id="copy" type="button" hidden>Copy</button>
+        </div>
+        <p class="under" id="under" role="status">One line, pasted into Terminal on your Mac. Setup takes it from there, in about 15 minutes.</p>
+      </div>
+      <div class="notmac">Railset works on Macs for now, with macOS 13 or newer, and this computer isn't one. Come back on a Mac when you can.</div>
+
+      <div class="phone-card">
+        <h2>Open this on your Mac</h2>
+        <p>Railset runs on a Mac, so that's where you set it up. In a browser on your Mac, go to:</p>
+        <span class="address">railset.app</span>
+      </div>
+    </section>
+
+    <ol class="steps">
+      <li id="first-step"><span class="n">1</span><b>Open Terminal</b>Press Command and Space, type Terminal and press Return. It's an app your Mac already has.</li>
+      <li><span class="n">2</span><b>Paste the line</b>Press Command and V, then Return.</li>
+      <li><span class="n">3</span><b>Setup takes over</b>It makes a folder for your idea, connects GitHub and opens Claude there.</li>
+    </ol>
+    <p class="fix">If Terminal says it couldn't connect, check your connection and paste the line again.</p>
+
+    <section class="block">
+      <h2>What to have ready</h2>
+      <ul class="ready">
+        <li><b>A Mac</b>With macOS 13 or newer.</li>
+        <li><b>Claude</b>The Claude app and a paid Claude plan.</li>
+        <li><b>A GitHub account</b>It's free, and you can make one during setup, in about 10 minutes.</li>
+      </ul>
+    </section>
+
+    <details>
+      <summary>What Railset shares, and how to stop it</summary>
+      <p>Setup asks you first, and no answer means no. With your yes, Railset sends usage data to PostHog, in Europe, so I can find and fix problems: which steps ran on your Mac, how long they took and what, if anything, went wrong. It's sent under a random code for your Mac, and a yes includes what Railset recorded before you answered. It never includes your code, your files or their names, what you type, or your name or email. Each send shows PostHog your Mac's internet address as it arrives, and it keeps none. PostHog keeps the rest for up to seven years, unless you ask me to delete it sooner.</p>
+      <p>The full list: which command or setup step ran, when, how long it took, how it ended and the kind of failure from Railset's own list; which of Railset's files Claude read; which agent started it; which step of getting started was under way; the kind of computer and its chip; Railset's version and the short id of the save a release was built from; whether the run had a terminal, ran in CI or was a test build; a number for each run; and Railset's housekeeping, such as how far a send got. If you send a problem report, it also holds the last day of this, and the words you wrote.</p>
+      <p>To stop, type <code>railset data-sharing off</code> in Terminal, or ask Claude to. Data already sent can't be taken back from your side, so to have it deleted, send me what this line prints: <code>grep ^computer ~/.railset/settings.toml</code></p>
+    </details>
+  </main>
+  <footer>
+    <p>Railset is made by Mikael Kopteff. Questions, or data to delete: <a href="mailto:hello@railset.app">hello@railset.app</a></p>
+    <p>This page counts visits and Copy clicks in PostHog, with no cookies and nothing that identifies you. GitHub, which serves the page, logs each visitor's internet address for its own security, and PostHog sees it as each count arrives and keeps none.</p>
+  </footer>
+</div>
+<script>
+(function () {
+  var root = document.documentElement;
+  var button = document.getElementById('copy');
+  var line = document.getElementById('line');
+  var under = document.getElementById('under');
+  var firstStep = document.getElementById('first-step');
+  var key = document.querySelector('meta[name="railset-count-key"]').content;
+  var visit = window.crypto && crypto.randomUUID && crypto.randomUUID();
+  var quiet;
+
+  // A count that can't be sent changes nothing for the visitor, so nothing waits on it.
+  function count(event) {
+    if (location.hostname !== 'railset.app' || !visit) { return; }
+    try {
+      fetch('https://eu.i.posthog.com/i/v0/e/', {
+        method: 'POST',
+        keepalive: true,
+        credentials: 'omit',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+          api_key: key,
+          event: event,
+          distinct_id: visit,
+          properties: {
+            $current_url: 'https://railset.app/',
+            $process_person_profile: false,
+            $geoip_disable: true
+          }
+        })
+      }).catch(function () {});
+    } catch (blocked) {}
+  }
+
+  if (!/Mac/.test(navigator.userAgent)) { root.classList.add('not-mac'); }
+  button.hidden = false;
+  count('$pageview');
+
+  function copied() {
+    count('install_line_copied');
+    button.textContent = 'Copied';
+    button.classList.add('done');
+    under.innerHTML = '<b>Copied.</b> Now open Terminal, as step 1 says.';
+    firstStep.classList.add('now');
+    clearTimeout(quiet);
+    quiet = setTimeout(function () {
+      button.textContent = 'Copy';
+      button.classList.remove('done');
+    }, 4000);
+  }
+
+  function blocked() {
+    var whole = document.createRange();
+    whole.selectNodeContents(line);
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(whole);
+    under.innerHTML = '<b>Your browser blocked Copy.</b> The line is selected, so press Command and C.';
+  }
+
+  button.addEventListener('click', function () {
+    if (!navigator.clipboard) { blocked(); return; }
+    navigator.clipboard.writeText(line.textContent).then(copied, blocked);
+  });
+})();
+</script>
+</body>
+</html>
