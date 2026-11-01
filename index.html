@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self'; connect-src https://eu.i.posthog.com; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self'; connect-src https://eu.i.posthog.com; base-uri 'none'; form-action 'none'">
 <meta name="railset-count-key" content="phc_kRgJ9YDmR5X4EGE6Pv6mgwoivGdb86YKJWBGQUEHNwCx">
 <title>Railset: build better software with Claude</title>
 <meta name="description" content="Railset guides you from your idea to software that works, step by step, even if you've never written code.">
@@ -111,6 +111,17 @@ h2 { font-size: 18px; letter-spacing: -.01em; font-weight: 620; margin: 0 0 14px
   font-size: 15.5px; color: var(--muted);
 }
 .ready b { display: block; color: var(--ink); font-weight: 600; }
+.adds { margin: 72px 0 0; border-top: 1px solid var(--rule); padding-top: 40px; }
+.adds h2 { font-size: clamp(28px, 3.4vw, 38px); line-height: 1.1; letter-spacing: -.03em; font-weight: 680; margin: 0 0 32px; text-wrap: balance; }
+.adds ul {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 28px;
+  font-size: 15.5px; color: var(--muted);
+}
+.adds li b { display: block; color: var(--ink); font-weight: 620; font-size: 18px; letter-spacing: -.01em; margin-bottom: 5px; }
+.adds li.first { grid-column: 1 / -1; max-width: 720px; font-size: 17px; }
+.adds li.first b { font-size: 22px; letter-spacing: -.015em; margin-bottom: 6px; }
+.adds .source { margin: 32px 0 0; font-size: 14.5px; color: var(--muted); }
 details { margin: 40px 0 0; border-top: 1px solid var(--rule); padding-top: 18px; font-size: 15px; color: var(--muted); }
 summary { cursor: pointer; color: var(--ink); font-weight: 600; font-size: 16px; }
 details p { margin: 12px 0 0; max-width: 720px; }
@@ -138,6 +149,8 @@ summary:focus-visible, footer a:focus-visible { outline: 2px solid var(--accent)
 .not-mac .install, .not-mac .steps, .not-mac .fix { display: none; }
 @media (max-width: 760px) {
   .steps, .ready { grid-template-columns: 1fr; gap: 16px; }
+  .adds { margin-top: 48px; padding-top: 30px; }
+  .adds ul { grid-template-columns: 1fr; gap: 22px; }
   .line { flex-wrap: wrap; padding: 14px; }
   .copy { width: 100%; }
   .hero { padding-top: 44px; }
@@ -205,9 +218,23 @@ summary:focus-visible, footer a:focus-visible { outline: 2px solid var(--accent)
     <ol class="steps">
       <li id="first-step"><span class="n">1</span><b>Open Terminal</b>Press Command and Space, type Terminal and press Return. It's an app your Mac already has.</li>
       <li><span class="n">2</span><b>Paste the line</b>Press Command and V, then Return.</li>
-      <li><span class="n">3</span><b>Setup takes over</b>It makes a folder for your idea, connects GitHub and opens Claude there.</li>
+      <li><span class="n">3</span><b>Setup takes over</b>It installs a small command-line program and a Claude plugin, makes a folder for your idea, connects GitHub and opens Claude there.</li>
     </ol>
     <p class="fix">If Terminal says it couldn't connect, check your connection and paste the line again.</p>
+
+    <section class="adds">
+      <h2>What Railset adds to Claude</h2>
+      <ul>
+        <li class="first"><b>Build what people want</b>Railset helps you build the way the best software products are built. You learn from the market with battle-proven* methods and start small, building only what solves a real problem for your users. You don't spend months on software nobody needs.</li>
+        <li><b>Your idea becomes a plan</b>Tell Claude your idea the way you'd tell a friend. In about 20 minutes, before anything gets built, you have a vision and a roadmap for how to build it.</li>
+        <li><b>You work in Claude</b>Railset runs in the background and knows the best practices, so you don't have to. Your code and plans stay in your own private GitHub repository, in files Claude can read with or without Railset.</li>
+        <li><b>Continuous security and quality checks</b>Railset builds security and testing into the plan before any work starts. Then separate AI reviewers read each change, again and again until nothing important is left.</li>
+        <li><b>You approve the work</b>You say yes to the plan before Claude starts, and you try the result yourself before it joins your product.</li>
+        <li><b>You always know what's next</b>Railset shows where your project stands and recommends what to do next. When there's a decision to make, you get the options in plain words, and you choose.</li>
+        <li><b>Build several things at the same time</b>Railset keeps it structured and easy to follow: every piece of work goes through the same steps, and you always see where it is.</li>
+      </ul>
+      <p class="source">* Railset's approach to deciding what to build comes from Marty Cagan and the Silicon Valley Product Group (SVPG).</p>
+    </section>
 
     <section class="block">
       <h2>What to have ready</h2>
@@ -227,7 +254,7 @@ summary:focus-visible, footer a:focus-visible { outline: 2px solid var(--accent)
   </main>
   <footer>
     <p>Railset is made by Mikael Kopteff. Questions, or data to delete: <a href="mailto:hello@railset.app">hello@railset.app</a></p>
-    <p>This page counts visits and Copy clicks in PostHog, with no cookies and nothing that identifies you. GitHub, which serves the page, logs each visitor's internet address for its own security, and PostHog sees it as each count arrives and keeps none.</p>
+    <p>This page counts visits and Copy clicks in PostHog, with no cookies and nothing stored on your computer. With each count, PostHog sees which site sent you here and your browser, device, screen size, language and time zone. To count a visitor once a day, it makes a one-way code from your internet address and browser, changed every day. It keeps no internet addresses. GitHub, which serves the page, logs each visitor's internet address for its own security.</p>
   </footer>
 </div>
 <script>
@@ -238,35 +265,33 @@ summary:focus-visible, footer a:focus-visible { outline: 2px solid var(--accent)
   var under = document.getElementById('under');
   var firstStep = document.getElementById('first-step');
   var key = document.querySelector('meta[name="railset-count-key"]').content;
-  var visit = window.crypto && crypto.randomUUID && crypto.randomUUID();
   var quiet;
 
   // A count that can't be sent changes nothing for the visitor, so nothing waits on it.
   function count(event) {
-    if (location.hostname !== 'railset.app' || !visit) { return; }
-    try {
-      fetch('https://eu.i.posthog.com/i/v0/e/', {
-        method: 'POST',
-        keepalive: true,
-        credentials: 'omit',
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify({
-          api_key: key,
-          event: event,
-          distinct_id: visit,
-          properties: {
-            $current_url: 'https://railset.app/',
-            $process_person_profile: false,
-            $geoip_disable: true
-          }
-        })
-      }).catch(function () {});
-    } catch (blocked) {}
+    if (window.posthog && posthog.__loaded) { posthog.capture(event); }
   }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (location.hostname !== 'railset.app' || !window.posthog) { return; }
+    posthog.init(key, {
+      api_host: 'https://eu.i.posthog.com',
+      cookieless_mode: 'always',
+      person_profiles: 'never',
+      autocapture: false,
+      capture_dead_clicks: false,
+      capture_heatmaps: false,
+      capture_performance: false,
+      capture_exceptions: false,
+      disable_session_recording: true,
+      disable_surveys: true,
+      disable_external_dependency_loading: true,
+      advanced_disable_flags: true
+    });
+  });
 
   if (!/Mac/.test(navigator.userAgent)) { root.classList.add('not-mac'); }
   button.hidden = false;
-  count('$pageview');
 
   function copied() {
     count('install_line_copied');
@@ -296,5 +321,6 @@ summary:focus-visible, footer a:focus-visible { outline: 2px solid var(--accent)
   });
 })();
 </script>
+<script src="/posthog-1.438.12.js" integrity="sha384-+Lkmn19DYonVgUwLkn6wB27C9VRu21N4rIsR+Y5JGqhmp6JLZKAzUV0uUwgMMdiY" defer></script>
 </body>
 </html>
