@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://railset.app/sitemap.xml

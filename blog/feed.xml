@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Railset blog</title>
+  <subtitle>Mikael Kopteff writes about building software with AI coding agents, and about lessons from making Railset.</subtitle>
+  <link href="https://railset.app/blog/feed.xml" rel="self"/>
+  <link href="https://railset.app/blog/"/>
+  <id>https://railset.app/blog/</id>
+  <updated>2026-11-07T00:00:00Z</updated>
+  <author><name>Mikael Kopteff</name></author>
+  <entry>
+    <title>Agentic development doesn’t need new ideas. It needs old ones rethought.</title>
+    <link href="https://railset.app/blog/agentic-development-doesnt-need-new-ideas/"/>
+    <id>https://railset.app/blog/agentic-development-doesnt-need-new-ideas/</id>
+    <published>2026-11-07T00:00:00Z</published>
+    <updated>2026-11-07T00:00:00Z</updated>
+    <summary>The concepts we already have are mostly right. What changed is how they’re implemented.</summary>
+  </entry>
+</feed>
