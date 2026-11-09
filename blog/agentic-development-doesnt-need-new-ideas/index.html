@@ -20,8 +20,8 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Agentic development doesn’t need new ideas. It needs old ones rethought., with the Railset mark and Mikael Kopteff’s name.">
-<meta property="article:published_time" content="2026-11-07">
+<meta property="og:image:alt" content="Agentic development doesn’t need new ideas. It needs old ones rethought. With the Railset mark and Mikael Kopteff’s name.">
+<meta property="article:published_time" content="2026-11-08">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
@@ -30,8 +30,8 @@
   "headline": "Agentic development doesn’t need new ideas. It needs old ones rethought.",
   "description": "The concepts we already have are mostly right. What changed is how they’re implemented.",
   "image": "https://railset.app/blog/agentic-development-doesnt-need-new-ideas/preview.png",
-  "datePublished": "2026-11-07",
-  "dateModified": "2026-11-07",
+  "datePublished": "2026-11-08",
+  "dateModified": "2026-11-08",
   "author": { "@type": "Person", "name": "Mikael Kopteff", "url": "https://railset.app/blog/" },
   "publisher": { "@type": "Organization", "name": "Railset", "url": "https://railset.app/" },
   "mainEntityOfPage": "https://railset.app/blog/agentic-development-doesnt-need-new-ideas/"
@@ -245,27 +245,26 @@ header.site > nav { margin-left: auto; }
         <p class="dek">The concepts we already have are mostly right. What changed is how they’re implemented.</p>
         <div class="byline">
           <span class="avatar" aria-hidden="true">MK</span>
-          <div><b>Mikael Kopteff</b><time datetime="2026-11-07">7 November 2026</time> · 11 min read</div>
+          <div><b>Mikael Kopteff</b><time datetime="2026-11-08">8 November 2026</time> · 11 min read</div>
         </div>
       </header>
       <div class="prose">
 <p>So about a year ago I started to think I needed to build something serious with Claude Code. So, on a whim I decided to build a headless CMS (because I was pissed off with Contentful). I assumed the hard part would be getting the model to write decent code in the long term.</p>
 <p>And oh boy was I wrong. The code was fine (as a huge fan of software craftsmanship “OKish” is more accurate). What I spent a huge chunk of my time on was process and the product. Somewhere around the second month I noticed I was slowly re-inventing things software teams had figured out decades ago, except badly, through trial and error, and under new names. With agents that were working faster than me.</p>
-<p>After four months and about 70 pull requests, I realised how much of my engineering experience I was still supplying to the process of building. Claude could write the code, but I was deciding how to split the work, how to prioritise, what needed testing, when review was necessary, and whether “done” in my tasks meant anything to the implementing agent. I’d spent 25 years learning those habits. I started wondering how much of that experience could live in the system around the agent, in a platform. How much of it can be generalised?</p>
+<p>After four months and about 70 pull requests, I realised how much of my engineering experience I was still supplying to the process of building. Claude would write the code, but I was deciding how to split the work, how to prioritise, what needed testing, when review was necessary, and whether “done” in my tasks meant anything to the implementing agent. I’d spent 25 years learning those habits. I started wondering how much of that experience could live in the system around the agent, in a platform. How much of it can be generalised?</p>
 <p>I also noticed that I’d drifted (pun intended) towards product management: less time on technical details, more time deciding what the CMS should do, who it was for and what was worth building next.</p>
 <p>Those two things were the main lessons for me. The concepts we already have are mostly right. What changed is how they’re implemented, and that turns out to be a much more interesting problem than starting over.</p>
 <h2>What I’m talking about</h2>
 <p>Let me define the thing I’m talking about, since I think “AI coding or vibe coding” covers too much.</p>
-<p>To me, <strong>agent-driven development</strong> is where agents do most of the building, inside a harness that constrains what they can do, and the human is the product CEO.</p>
-<p>A CEO: accountable for what gets built and why, deciding what matters next, answerable when it’s wrong. You stop writing most of the code and you own all of the decisions and the product.</p>
-<p>The system should help you make those decisions: bring the product questions, the alternatives and the evidence, and carry out the work you decide is worth doing.</p>
+<p>To me, <strong>agent-driven development</strong> is where agents do most of the building, inside a harness that constrains what they can do, and the human is the product CEO. The human is accountable for what gets built and why, deciding what matters next, answerable when it’s wrong. You stop writing most of the code and you own all of the decisions and the product.</p>
+<p>The system should help you make those decisions by bringing the product questions, the alternatives and the evidence, and carrying out the work you decide is worth doing.</p>
 <p>That’s different from a “superboosted autocomplete”, and different from “I asked an AI to build me a CMS”. It’s a team composition. And once you see it as a team, the question becomes “what does a team need to function?”, which is a question we have decades of answers to.</p>
 <h2>The layers</h2>
 <p>Here’s how I think about the stack now, from the bottom.</p>
 <p><strong>The model</strong> is Claude. It knows how to write OKish code. It doesn’t arrive knowing the current state of my CMS or why I made its decisions.</p>
 <p><strong>The harness</strong> is Claude Code. Files, terminal, tools, hooks. Deliberately generic. Same harness whether you’re writing a compiler or a landing page, and that’s the point of it.</p>
-<p><strong>The governance layer</strong> is how I think software products should be built. How we decide which problems are worth solving. Which assumptions need testing. What evidence would make us change the plan. What a task plan contains. When to stop and ask a human. What done means. Testing strategy, clean code practices, review discipline, security checks. None of this is specific to my CMS. It’s how I’d want any project run, and it should barely change between projects. This is where I put most of my 25 years of software development experience.</p>
-<p><strong>The project layer</strong> is everything that’s only true within the scope of the project I’m building. Vision, strategy, the lean canvas, the roadmap, the architecture decision records, which explain important design choices and their reasoning. The decisions and the evidence behind them. The governance layer says how we make product decisions; this layer holds this product’s decisions, assumptions and what we’ve learned.</p>
+<p><strong>The governance layer</strong> is how I think software products should be built. How we decide which problems are worth solving. Which assumptions need testing. When to stop and ask a human. What done means. Testing strategy, clean code practices, review discipline, security checks. None of this was specific to my CMS. It’s how I’d want any project run, and it should barely change between projects. This is where I put most of my 25 years of software development experience.</p>
+<p><strong>The project layer</strong> is everything that’s only true within the scope of the project I’m building. Vision, strategy, the lean canvas, technical architecture and the roadmap. The governance layer says how we make product decisions and this layer holds this product’s decisions, assumptions and what we’ve learned.</p>
 <p><strong>The work layer</strong> is task management plus git. Which epic, a piece of work with a visible outcome, which task, what state it’s in, what got merged and why.</p>
 <p><strong>The session</strong> is me and Claude, usually a couple of hours per session. I have several sessions open at the same time, with agents working quite autonomously.</p>
 <p>Six layers, and once you can see which one a problem lives in, most arguments about prompting stop being interesting. “The agent keeps forgetting our conventions” is a governance problem. “The agent doesn’t know why we chose Postgres” is a project problem. Different layers require different fixes.</p>
@@ -274,8 +273,8 @@ header.site > nav { margin-left: auto; }
 <div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table><thead><tr><th>Role</th><th>What it holds</th><th>Where it lives</th><th>Lifetime</th></tr></thead><tbody>
 <tr><td>How we build software</td><td>Rules, checks, definition of done</td><td>Governance layer</td><td>Years, across projects</td></tr>
 <tr><td>What we’re building and why</td><td>Vision, strategy, roadmap, user evidence, architecture, designs</td><td>Project layer</td><td>Life of the project</td></tr>
-<tr><td>What has happened</td><td>Epics, tasks, commits, pull requests</td><td>Work layer: task management plus git</td><td>Life of the project</td></tr>
-<tr><td>What happens next</td><td>Milestones, epics, priorities</td><td>Roadmap, in the project layer</td><td>Weeks to months</td></tr>
+<tr><td>What has happened</td><td>Epics, tasks, commits, pull requests</td><td>Work layer (Task management + git)</td><td>Life of the project</td></tr>
+<tr><td>What happens next</td><td>Roadmap, Milestones, priorities</td><td>Project layer</td><td>Weeks to months</td></tr>
 <tr><td>What I know right now</td><td>Everything figured out today</td><td>Session context</td><td>Hours to days</td></tr>
 </tbody></table></div>
 <p>The top four are long-term memory. Durable, shared, still there tomorrow. Git and task management are the interesting pair: git is what happened to the code, task management is what happened to the work and why, including outcomes. You need both or you’re doing archaeology. To be honest, most of what I do now with agents is working with those outcomes.</p>
@@ -288,7 +287,7 @@ header.site > nav { margin-left: auto; }
 <p>A rule we give an agent is usually a line of markdown, an instruction file. The agent reads it, mostly follows it, and skips it when the context gets long or the task gets hard. That isn’t the model being lazy. Reading a rule and applying a rule are different operations.</p>
 <p>The way this showed up for me was that certain features were marked done that weren’t even built. Acceptance criteria ticked with the work half-finished. Tests promised in the plan and never written. A task closed because the agent said it was closed. My definition of done was written down the whole time. Nothing checked it, so it held on the days I was paying attention and quietly didn’t on the days I wasn’t.</p>
 <p>Same story with code reviews. I had the rule from the start, skipped it for weeks on four-thousand-line changes, and nothing noticed until a user complained that my CMS had bugs where I thought I’d been thorough.</p>
-<p>So the system has a hole in it. A session learns something, I ask Claude to write it into the governance layer, and it becomes one more line that gets skipped when I’m in a hurry.</p>
+<p>So the system has holes in it. A session learns something, I ask Claude to write it into the governance layer, and it becomes one more line that gets skipped when I’m in a hurry.</p>
 <p>I had automated the production of instructions nobody follows.</p>
 <p>That’s a bit unfair. The instructions helped plenty of the time. But the important ones needed to hold when I was distracted too (I have a 2.5 year old kid so this happens a lot). Otherwise I was still the thing making the process work, just with more markdown involved.</p>
 <h2>We (still) need deterministic code (more than ever)</h2>
@@ -296,21 +295,20 @@ header.site > nav { margin-left: auto; }
 <p>This sounded sensible. If asking nicely didn’t hold, make it a requirement.</p>
 <p>The hooks misfired and collided with each other. Within a week I’d switched all of them off, reminders included. About 30% of that codebase was focused on limiting the agent before it made an error. I’d basically created a second, totally useless Bash permission layer on top of Claude Code.</p>
 <p>So that was useful. I’d managed to build a process that I didn’t want to use myself.</p>
-<p>Drift is expensive. Repeating yourself and correcting agents in every session on the same issues pushes your attention towards managing the process. But a system that keeps blocking reasonable work is expensive too. I want the checks to earn their place by catching something that actually matters.</p>
-<p>So I took a simpler path, first enforcing only that agents read certain workflows before they started and making sure there is an outcome, for instance allowing code reviews to pass only when they meet certain conditions. And I made that a hard rule. Through trial and error I found the cases where failure caused the most damage (or burden) and applied either nudges or gates that block.</p>
-<p>What this made me realise is that what I needed was an intricate balance of deterministic code, the model’s judgment and in some cases human judgement. It isn’t entirely clear when you need one or both, or how much of each. Some things deserve a hard check. Some need a nudge at the right moment. Some need to come back to the human as a decision.</p>
-<p>So what I think we (we as in people who gravitate towards Agent-driven development) need on top of Claude Code or Codex is a much more opinionated layer that carries the practices software development and digital product teams have learnt throughout the years. Implemented for agents interacting with a human who owns the product. Things like:</p>
+<p>Drift is expensive, so repeating yourself and correcting agents in every session on the same issues pushes your attention towards managing the process. But a system that keeps blocking reasonable work is expensive too. I want the checks to earn their place by catching something that actually matters.</p>
+<p>So I took a simpler path, first enforcing only that agents read certain workflows before they are started and making sure there is an outcome, for instance allowing code reviews to pass only when they meet certain conditions. And I made that a hard rule (so old school deterministic code). Through trial and error I found the cases where failure caused most damage (or burden) and applied either nudges or gates that block depending on severity.</p>
+<p>What this made me realise is that what I needed was an intricate balance of deterministic code, the model’s judgment and in some cases human judgement. It isn’t entirely clear when you need one or all, or how much of each. Some things deserve a hard check. Some need a nudge at the right moment. Some need to come back to the human as a decision.</p>
+<p>So I started to create implementations using a combination of the aforementioned (deterministic code for nudging or blocking, agent judgment and human judgment) for things like:</p>
 <ul>
 <li>A plan exists before the code does, and the human has approved the decisions that need them.</li>
 <li>The tests passed on exactly this code, and the missing checks are visible.</li>
 <li>The change is small enough to implement, review and try.</li>
-<li>Every change gets reviewed for security, code quality and modularity.</li>
+<li>Every change (PR) gets reviewed for security, code quality and modularity.</li>
 <li>Nothing closes without evidence of the outcomes it promised.</li>
-<li>What the session learned gets written back before it’s lost.</li>
 </ul>
 <h2>Same practices, new implementations</h2>
 <p>Once I saw that, I couldn’t unsee the pattern.</p>
-<p>We already know a lot about building software products well. Decades of it. Talking to users and testing assumptions so we don’t spend weeks solving the wrong problem. Kickoffs so work doesn’t start on assumptions. A definition of done so done means something. Small batches so changes can be understood, checked and corrected. Limits on work in progress so nothing sits half-finished. Code review to find problems. Retrospectives to improve the process. Architecture decision records so the reasoning survives the decision. Security testing to look for vulnerabilities.</p>
+<p>We already know a lot about building software products well. Decades of it. Talking to users and <a href="https://www.svpg.com/four-big-risks/">testing assumptions</a> so we don’t spend weeks solving the wrong problem. Kickoffs so we define the outcomes. A definition of done so done means something. <a href="https://dora.dev/capabilities/working-in-small-batches/">Small batches</a> so changes can be understood, checked and corrected. Limits on work in progress so nothing sits half-finished. Code review to find problems. Retrospectives to improve the process. Architecture decision records so the reasoning survives the decision. Security testing to look for vulnerabilities.</p>
 <p>The starting point for me is those same concepts with different implementations. Each implementation still has to show that it works with agents.</p>
 <div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table><thead><tr><th>Practice</th><th>What it looked like on a human team</th><th>What I’m trying to carry into the agent workflow</th></tr></thead><tbody>
 <tr><td>Deciding what to build</td><td>Research, talking to users and testing assumptions</td><td>The agent helps the founder examine evidence, propose small tests and record what was learned, with feedback from real users</td></tr>
@@ -318,16 +316,17 @@ header.site > nav { margin-left: auto; }
 <tr><td>Limits on work in progress</td><td>A column count on a board</td><td>One active epic per session, with its own working copy</td></tr>
 <tr><td>Code review</td><td>A colleague reading the proposed change</td><td>Independent agent review, fixes checked again, and a clear decision when the review won’t finish</td></tr>
 <tr><td>Retrospective</td><td>A conversation about what to improve</td><td>A step when work closes that updates the shared practices or proposes a new check</td></tr>
-<tr><td>Definition of done</td><td>A checklist someone remembers</td><td>Recorded checks and review, a result the human can try, and an honest account of what remains uncertain</td></tr>
+<tr><td>Definition of done</td><td>A checklist</td><td>Recorded checks and review, a result a human can try (demo), and an honest account of what remains uncertain</td></tr>
 </tbody></table></div>
 <p>The concept survives, the implementation changes, and the name can stay the same. The old name arrives with years of people understanding why it matters. That also gives us something to compare our implementation against.</p>
 <h2>Where the tools are</h2>
-<p>This seems like it’s getting crowded, at least based on GitHub projects. BMAD, Everything Claude Code, Spec Kit, OpenSpec, Agent OS, gstack, superpowers. There are plenty of people working on instructions, memory, review and the process around agents.</p>
-<p>I’ve been building in this space too. This website is mostly about that. I strongly believe that Claude Code and Codex are inviting non-developers to build and the amount of people building is growing rapidly. I want to bring the experience and know-how to be available for them so the software they build is secure, of good quality and actually solves somebody’s problem.</p>
+<p>So what I think we (we as in people who gravitate towards Agent-driven development) need is a layer on top of Claude Code or Codex which is much more opinionated and carries the practices software development and digital product teams have learnt throughout the years. Implemented for agents interacting with a human who owns the product. The product that I’m building, Railset, is all about this (yes I did abandon the CMS).</p>
+<p>It seems to me that this space is gaining traction, at least based on GitHub projects. BMAD, Everything Claude Code, Spec Kit, OpenSpec, Agent OS, gstack, superpowers. There are plenty of people working on instructions, memory, review and the process around agents.</p>
+<p>I believe that Claude Code and Codex are inviting non-developers to build and the amount of people building is growing rapidly. I want to bring the experience and know-how to be available for them so the software they build is secure, of good quality and actually solves somebody’s problem.</p>
 <p>What particularly interests me is how much of the experience behind a good product team can I implement into a system that is run by agents. I could recognise some of these failures because I’d spent years building software, and I still let things through. Someone building their first product with Claude shouldn’t have to acquire that whole history before they can benefit from the practices.</p>
 <p>I want the system to carry the engineering discipline and help the person building ask better product questions. They still own the decisions about who the product serves, which problems matter and whether the result is useful. The workflow should arrange the engineering steps, prepare the evidence and bring them the decisions that are theirs. How reliably we can get it to do that is still something to test.</p>
 <h2>If you’re doing this too</h2>
-<p>Work out which layer your problem is in before you touch a prompt. Treat git and your work records as a pair. Keep your index useful, and before you write the next rule into CLAUDE.md, ask how you’ll know it was followed. Sometimes a hook or a check can answer that. Sometimes the rule needs judgment and a review. Sometimes you need to try the CMS and see whether the feature actually works.</p>
+<p>Work out which layer your problem is in before you touch a prompt. Treat git and your work records as a pair. Keep your index useful, and before you write the next rule into CLAUDE.md, ask how you’ll know it was followed. Sometimes a hook or a check can answer that. Sometimes the rule needs judgment and a review.</p>
 <p>And when you catch yourself inventing a name for a practice, check whether it already has one. It usually does, and the old name arrives with twenty years of people already understanding why it matters.</p>
 <p>The industry is now porting those practices into a different kind of team. I’d like the experience behind them to be available to the person building their first product too.<svg class="end-mark" viewBox="0 0 24 24" role="img" aria-label="End"><g fill="currentColor"><path d="M8.6 2h2.3L5.4 22H1.6z"/><path d="M13.1 2h2.3l7 20h-3.8z"/><rect x="8.2" y="5.2" width="7.6" height="2" rx=".4"/><rect x="6.6" y="10.4" width="10.8" height="2.2" rx=".4"/><rect x="4.8" y="16" width="14.4" height="2.6" rx=".4"/></g></svg></p>
       </div>
